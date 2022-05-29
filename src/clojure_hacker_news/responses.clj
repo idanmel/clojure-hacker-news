@@ -9,3 +9,8 @@
 
 (def response-not-found
   (response-plain-text "not found" 404))
+
+(defn response-json [body]
+  {:headers {"Content-Type" "application/json; charset=utf-8"}
+   :status 200
+   :body body})
