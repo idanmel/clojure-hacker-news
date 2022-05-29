@@ -16,7 +16,8 @@
 
 (defroutes myapp
            (GET "/ping" [] (plain-text-headers "pong" 200))
-           (GET "/not-a-ping" [] (plain-text-headers "not found" 404)))
+           (GET "/not-a-ping" [] (plain-text-headers "not found" 404))
+           (GET "/not-found" [] (plain-text-headers "not found" 404)))
 
 (defn -main []
   (run-server myapp {:port 5000}))
