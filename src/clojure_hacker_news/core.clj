@@ -20,9 +20,7 @@
 
 (defroutes myapp
            (GET "/ping" [] (response-plain-text "pong" 200))
-           (POST "/create-post" [] {:headers content-type-plain-text
-                                    :status 201
-                                    :body "post created"})
+           (POST "/create-post" [] (response-plain-text "post created" 201))
            (not-found response-not-found))
 
 (defn -main []
