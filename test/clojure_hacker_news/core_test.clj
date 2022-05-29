@@ -5,10 +5,10 @@
 
 (deftest ping
   (testing "ping"
-    (is (= (myapp (mock/request :get "/ping"))
-           {:body    "pong"
-            :headers {"Content-Type" "text/plain; charset=utf-8"}
-            :status  200}))))
+    (let [{status :status body :body headers :headers} (myapp (mock/request :get "/ping"))]
+      (is (= 200 status))
+      (is (= {"Content-Type" "text/plain; charset=utf-8"} headers))
+      (is (= "pong" body)))))
 
 (deftest not-found
   (testing "not-a-ping"
