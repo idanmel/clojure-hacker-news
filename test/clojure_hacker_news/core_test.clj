@@ -1,6 +1,5 @@
 (ns clojure-hacker-news.core-test
   (:require [clojure.test :refer :all]
-            [clojure-hacker-news.core :refer :all]
             [ring.mock.request :as mock]
             [clojure-hacker-news.core :refer [content-type-plain-text myapp response-not-found]]))
 
