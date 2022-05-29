@@ -5,7 +5,7 @@
 
 (def content-type-plain-text {"Content-Type" "text/plain; charset=utf-8"})
 
-(defn json-headers [body]
+(defn response-json [body]
   {:headers {"Content-Type" "application/json; charset=utf-8"}
    :status 200
    :body body})
