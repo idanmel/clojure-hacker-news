@@ -3,6 +3,8 @@
             [compojure.route :refer [not-found]]
             [org.httpkit.server :refer [run-server]]))
 
+(def content-type-plain-text {"Content-Type" "text/plain; charset=utf-8"})
+
 
 (defn json-headers [body]
   {:headers {"Content-Type" "application/json; charset=utf-8"}
@@ -10,7 +12,7 @@
    :body body})
 
 (defn plain-text-headers [body status]
-  {:headers {"Content-Type" "text/plain; charset=utf-8"}
+  {:headers content-type-plain-text
    :status status
    :body body})
 
