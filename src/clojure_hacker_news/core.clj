@@ -10,16 +10,16 @@
    :status 200
    :body body})
 
-(defn plain-text-headers [body status]
+(defn response-plain-text [body status]
   {:headers content-type-plain-text
    :status status
    :body body})
 
 (def response-not-found
-  (plain-text-headers "not found" 404))
+  (response-plain-text "not found" 404))
 
 (defroutes myapp
-           (GET "/ping" [] (plain-text-headers "pong" 200))
+           (GET "/ping" [] (response-plain-text "pong" 200))
            (not-found response-not-found))
 
 (defn -main []
