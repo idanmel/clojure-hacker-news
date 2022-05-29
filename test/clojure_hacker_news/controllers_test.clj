@@ -8,3 +8,8 @@
     (is (= (response-plain-text "post created" 201) (post-controller/create-response :ok))))
   (testing "post not created"
     (is (= (response-plain-text "post creation failed" 500) (post-controller/create-response :error)))))
+
+(deftest controller-2-sql-dsl
+  (testing "Turn request to honeysql dsl"
+    (is (= (post-controller/req->sql-dsl {:content "text" :title "awesome"})
+           {:insert-into [:post] :values [{:content "text", :title "awesome"}]}))))
