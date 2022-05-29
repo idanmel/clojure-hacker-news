@@ -1,7 +1,8 @@
 (ns clojure-hacker-news.core-test
   (:require [clojure.test :refer :all]
             [ring.mock.request :as mock]
-            [clojure-hacker-news.core :refer [content-type-plain-text myapp response-not-found]]))
+            [clojure-hacker-news.core :refer [myapp]]
+            [clojure-hacker-news.responses :refer [content-type-plain-text response-not-found]]))
 
 (defn mock-request
   ([path]
@@ -30,4 +31,3 @@
       (is (= 201 status))
       (is (= content-type-plain-text headers))
       (is (= "post created" body)))))
-
