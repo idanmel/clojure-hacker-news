@@ -1,14 +1,7 @@
 (ns clojure-hacker-news.core-test
   (:require [clojure.test :refer :all]
-            [ring.mock.request :as mock]
-            [clojure-hacker-news.core :refer [myapp]]
-            [clojure-hacker-news.responses :refer [content-type-plain-text response-not-found]]))
-
-(defn mock-request
-  ([path]
-   (myapp (mock/request :get path)))
-  ([method path]
-   (myapp (mock/request method path))))
+            [clojure-hacker-news.responses :refer [content-type-plain-text response-not-found]]
+            [clojure-hacker-news.helpers :refer [mock-request]]))
 
 (deftest ping
   (testing "ping"
@@ -24,10 +17,3 @@
     (is (= response-not-found (mock-request "/not-found"))))
   (testing "also-not-found"
     (is (= response-not-found (mock-request "/also-not-found")))))
-
-(deftest create-post
-  (testing "post created"
-    (let [{status :status body :body headers :headers} (mock-request :post "/create-post")]
-      (is (= 201 status))
-      (is (= content-type-plain-text headers))
-      (is (= "post created" body)))))
