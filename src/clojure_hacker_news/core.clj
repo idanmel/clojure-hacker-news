@@ -1,6 +1,26 @@
-(ns clojure-hacker-news.core)
+(ns clojure-hacker-news.core
+  (:require [compojure.core :refer [GET defroutes]]
+            [compojure.route :refer [not-found]]
+            [org.httpkit.server :refer [run-server]]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(def content-type-plain-text {"Content-Type" "text/plain; charset=utf-8"})
+
+(defn response-json [body]
+  {:headers {"Content-Type" "application/json; charset=utf-8"}
+   :status 200
+   :body body})
+
+(defn response-plain-text [body status]
+  {:headers content-type-plain-text
+   :status status
+   :body body})
+
+(def response-not-found
+  (response-plain-text "not found" 404))
+
+(defroutes myapp
+           (GET "/ping" [] (response-plain-text "pong" 200))
+           (not-found response-not-found))
+
+(defn -main []
+  (run-server myapp {:port 5000}))
