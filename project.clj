@@ -7,5 +7,6 @@
                  [compojure "1.6.3"]
                  [http-kit "2.5.3"]
                  [ring/ring-mock "0.4.0"]
-                 [com.github.seancorfield/next.jdbc "1.2.780"]]
+                 [com.github.seancorfield/next.jdbc "1.2.780"]
+                 [honeysql "1.0.461"]]
   :repl-options {:init-ns clojure-hacker-news.core})
