@@ -20,6 +20,11 @@
     (is (= (myapp (mock/request :get "/not-found"))
            {:body    "not found"
             :headers {"Content-Type" "text/plain; charset=utf-8"}
+            :status  404})))
+  (testing "also-not-found"
+    (is (= (myapp (mock/request :get "/also-not-found"))
+           {:body    "not found"
+            :headers {"Content-Type" "text/plain; charset=utf-8"}
             :status  404}))))
 
 
