@@ -12,20 +12,20 @@
 
 (deftest not-found
   (testing "not-a-ping"
-    (is (= (myapp (mock/request :get "/not-a-ping"))
-           {:body    "not found"
-            :headers {"Content-Type" "text/plain; charset=utf-8"}
-            :status  404})))
+    (let [{status :status body :body headers :headers} (myapp (mock/request :get "/not-a-ping"))]
+      (is (= 404 status))
+      (is (= {"Content-Type" "text/plain; charset=utf-8"} headers))
+      (is (= "not found" body))))
   (testing "not-found"
-    (is (= (myapp (mock/request :get "/not-found"))
-           {:body    "not found"
-            :headers {"Content-Type" "text/plain; charset=utf-8"}
-            :status  404})))
+    (let [{status :status body :body headers :headers} (myapp (mock/request :get "/not-found"))]
+      (is (= 404 status))
+      (is (= {"Content-Type" "text/plain; charset=utf-8"} headers))
+      (is (= "not found" body))))
   (testing "also-not-found"
-    (is (= (myapp (mock/request :get "/also-not-found"))
-           {:body    "not found"
-            :headers {"Content-Type" "text/plain; charset=utf-8"}
-            :status  404}))))
+    (let [{status :status body :body headers :headers} (myapp (mock/request :get "/also-not-found"))]
+      (is (= 404 status))
+      (is (= {"Content-Type" "text/plain; charset=utf-8"} headers))
+      (is (= "not found" body)))))
 
 
 
