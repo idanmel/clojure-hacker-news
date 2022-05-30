@@ -3,6 +3,10 @@
             [clojure-hacker-news.responses :refer [response-plain-text]]
             [clojure-hacker-news.controllers.post :as post-controller]))
 
+(deftest request-validations-responses
+  (testing "request is not valid"
+    (is (= (response-plain-text "request does not have the required fields" 422)))))
+
 (deftest created-post-response
   (testing "post created"
     (is (= (response-plain-text "post created" 201) (post-controller/create-response :ok))))
