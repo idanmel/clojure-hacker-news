@@ -14,7 +14,6 @@
 
 (defn create-post
   [req db-create-post-function]
-  (let [valid_input? valid-create-inputs?]
-    (if valid_input?
-      (create-response (db-create-post-function (req->sql-dsl req)))
-      (response-plain-text "request does not have the required fields" 422))))
+  (if (valid-create-inputs? req)
+     (create-response (db-create-post-function (req->sql-dsl req)))
+     (response-plain-text "request does not have the required fields" 422)))
