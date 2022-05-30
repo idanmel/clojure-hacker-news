@@ -12,7 +12,7 @@
   [{content :content title :title}]
   {:insert-into [:post] :values [{:content content, :title title}]})
 
-(defn create-post
+(defn create
   [req db-create-post-function]
   (if (valid-create-inputs? req)
      (create-response (db-create-post-function (req->sql-dsl req)))
