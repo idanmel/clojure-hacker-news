@@ -13,4 +13,5 @@
                  [migratus "1.3.6"]
                  [clj-http "3.12.3"]
                  [ring/ring-json "0.5.1"]]
-  :repl-options {:init-ns clojure-hacker-news.core})
+  :repl-options {:init-ns clojure-hacker-news.core}
+  :main clojure-hacker-news.core/-main)

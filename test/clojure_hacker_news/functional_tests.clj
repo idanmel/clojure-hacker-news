@@ -14,6 +14,6 @@
   [f]
   (start-server 5000)
   (f)
-  (stop-server))
+  (stop-server 0))
 
 (use-fixtures :once server-fixture)

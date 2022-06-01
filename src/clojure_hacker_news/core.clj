@@ -23,14 +23,15 @@
   [port]
   (reset! server (run-server #'app {:port port})))
 
-(defn stop-server []
+(defn stop-server
+  [timeout]
   (when-not (nil? @server)
     ;; graceful shutdown: wait 100ms for existing requests to be finished
     ;; :timeout is optional, when no timeout, stop immediately
-    (@server :timeout 100)
+    (@server :timeout timeout)
     (reset! server nil)))
 
-;(defn -main []
-;  ;(migrations/init)
-;  ;(migrations/migrate)
-;  (start-server 5000))
+(defn -main []
+  (migrations/init)
+  (migrations/migrate)
+  (start-server 5000))

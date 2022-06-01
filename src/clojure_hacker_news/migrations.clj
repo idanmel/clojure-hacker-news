@@ -9,8 +9,8 @@
              :migration-table-name "migrations"
              :db db/config})
 
-;(def init
-;  (migratus/init config))
-;
-;(def migrate
-;  (migratus/migrate config))
+(defn init []
+  (migratus/init config))
+
+(defn migrate []
+  (migratus/migrate config))
