@@ -1,10 +1,7 @@
 (ns clojure-hacker-news.core-test
-  (:require [clojure.test :refer :all]
-            [ring.mock.request :as mock]
-            [clojure-hacker-news.core :refer [content-type-plain-text myapp response-not-found]]))
-
-(defn mock-request [path]
-  (myapp (mock/request :get path)))
+  (:require [clojure.test :refer [deftest is testing]]
+            [clojure-hacker-news.responses :refer [content-type-plain-text response-not-found]]
+            [clojure-hacker-news.test_helpers :refer [mock-request]]))
 
 (deftest ping
   (testing "ping"

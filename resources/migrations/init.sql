@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS posts
+(
+    id         BIGSERIAL PRIMARY KEY,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    updated_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    content TEXT,
+    title TEXT
+);

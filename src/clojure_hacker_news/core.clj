@@ -1,26 +1,37 @@
 (ns clojure-hacker-news.core
-  (:require [compojure.core :refer [GET defroutes]]
+  (:require [compojure.core :refer [GET POST defroutes]]
             [compojure.route :refer [not-found]]
-            [org.httpkit.server :refer [run-server]]))
+            [org.httpkit.server :refer [run-server]]
+            [clojure-hacker-news.responses :refer [response-plain-text response-not-found]]
+            [clojure-hacker-news.controllers.post :as post]
+            [clojure-hacker-news.db :as db]
+            [clojure-hacker-news.migrations :as migrations]
+            [ring.middleware.json :refer [wrap-json-body]]))
 
-(def content-type-plain-text {"Content-Type" "text/plain; charset=utf-8"})
+(defonce server (atom nil))
 
-(defn response-json [body]
-  {:headers {"Content-Type" "application/json; charset=utf-8"}
-   :status 200
-   :body body})
-
-(defn response-plain-text [body status]
-  {:headers content-type-plain-text
-   :status status
-   :body body})
-
-(def response-not-found
-  (response-plain-text "not found" 404))
-
-(defroutes myapp
+(defroutes routes
            (GET "/ping" [] (response-plain-text "pong" 200))
+           (POST "/posts" req (post/create! req db/create-post!))
            (not-found response-not-found))
 
+(def app
+  (-> routes
+      (wrap-json-body {:keywords? true})))
+
+(defn start-server
+  [port]
+  (reset! server (run-server #'app {:port port})))
+
+(defn stop-server
+  [timeout]
+  (when-not (nil? @server)
+    ;; graceful shutdown: wait 100ms for existing requests to be finished
+    ;; :timeout is optional, when no timeout, stop immediately
+    (@server :timeout timeout)
+    (reset! server nil)))
+
 (defn -main []
-  (run-server myapp {:port 5000}))
+  (migrations/init)
+  (migrations/migrate)
+  (start-server 5000))
