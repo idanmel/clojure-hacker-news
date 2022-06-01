@@ -16,4 +16,4 @@
 (deftest controller-2-sql-dsl
   (testing "Turn request to honeysql dsl"
     (is (= (post-controller/req->sql-dsl {:content "text" :title "awesome"})
-           {:insert-into [:post] :values [{:content "text", :title "awesome"}]}))))
+           {:insert-into [:posts] :values [{:content "text", :title "awesome"}]}))))

@@ -1,5 +1,8 @@
 (ns clojure-hacker-news.validations)
 
 (defn valid-create-inputs?
-  [req]
-  (= #{:title :content} (set (keys req))))
+  [body]
+  (->> body
+       keys
+       set
+       (= #{:title :content})))

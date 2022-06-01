@@ -1,7 +1,7 @@
 (ns clojure-hacker-news.core-test
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [deftest is testing]]
             [clojure-hacker-news.responses :refer [content-type-plain-text response-not-found]]
-            [clojure-hacker-news.helpers :refer [mock-request]]))
+            [clojure-hacker-news.test_helpers :refer [mock-request]]))
 
 (deftest ping
   (testing "ping"

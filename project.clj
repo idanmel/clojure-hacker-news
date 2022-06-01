@@ -8,5 +8,9 @@
                  [http-kit "2.5.3"]
                  [ring/ring-mock "0.4.0"]
                  [com.github.seancorfield/next.jdbc "1.2.780"]
-                 [honeysql "1.0.461"]]
+                 [com.github.seancorfield/honeysql "2.2.891"]
+                 [org.postgresql/postgresql "42.3.6"]
+                 [migratus "1.3.6"]
+                 [clj-http "3.12.3"]
+                 [ring/ring-json "0.5.1"]]
   :repl-options {:init-ns clojure-hacker-news.core})
