@@ -1,6 +1,5 @@
 (ns clojure-hacker-news.test_helpers
-  (:require [clojure.test :refer :all]
-            [ring.mock.request :as mock]
+  (:require [ring.mock.request :as mock]
             [clojure-hacker-news.core :refer [app]]))
 
 (defn mock-request

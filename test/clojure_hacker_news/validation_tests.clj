@@ -1,5 +1,5 @@
 (ns clojure-hacker-news.validation-tests
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [deftest testing is]]
             [clojure-hacker-news.validations :refer [valid-create-inputs?]]))
 
 (deftest validate-inputs

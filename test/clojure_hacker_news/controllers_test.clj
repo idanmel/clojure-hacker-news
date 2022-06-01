@@ -1,11 +1,7 @@
 (ns clojure-hacker-news.controllers-test
-  (:require [clojure.test :refer :all]
+  (:require [clojure.test :refer [deftest testing is]]
             [clojure-hacker-news.responses :refer [response-plain-text]]
             [clojure-hacker-news.controllers.post :as post-controller]))
-
-(deftest request-validations-responses
-  (testing "request is not valid"
-    (is (= (response-plain-text "request does not have the required fields" 422)))))
 
 (deftest created-post-response
   (testing "post created"

@@ -1,6 +1,5 @@
 (ns clojure-hacker-news.db
-  (:require [honey.sql :as honeysql]
-            [next.jdbc :as jdbc]))
+  (:require [next.jdbc :as jdbc]))
 
 (def config {:dbtype "postgresql"
              :dbname "hacker_news"
