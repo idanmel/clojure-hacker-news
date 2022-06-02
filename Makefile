@@ -1,6 +1,11 @@
 docker-clean:
 	docker-compose down -v
 
-tests-run: docker-clean
+docker-up:
 	docker-compose up -d
+
+lein-test:
 	lein test
+
+run-tests: docker-clean docker-up lein-test
+	docker-compose down -v
