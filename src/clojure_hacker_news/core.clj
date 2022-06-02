@@ -3,7 +3,7 @@
             [compojure.route :refer [not-found]]
             [org.httpkit.server :refer [run-server]]
             [clojure-hacker-news.responses :refer [response-plain-text response-not-found]]
-            [clojure-hacker-news.controllers.post :as post]
+            [clojure-hacker-news.controllers.posts :as post]
             [clojure-hacker-news.db :as db]
             [clojure-hacker-news.migrations :as migrations]
             [ring.middleware.json :refer [wrap-json-body]]))

@@ -1,4 +1,4 @@
-(ns clojure-hacker-news.controllers.post
+(ns clojure-hacker-news.controllers.posts
   (:require [clojure-hacker-news.responses :refer [response-plain-text]]
             [clojure-hacker-news.validations :refer [valid-create-inputs?]]
             [clojure-hacker-news.helpers :refer [req->body]]

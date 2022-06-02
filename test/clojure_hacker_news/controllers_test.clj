@@ -1,7 +1,7 @@
 (ns clojure-hacker-news.controllers-test
   (:require [clojure.test :refer [deftest testing is]]
             [clojure-hacker-news.responses :refer [response-plain-text]]
-            [clojure-hacker-news.controllers.post :as post-controller]))
+            [clojure-hacker-news.controllers.posts :as post-controller]))
 
 (deftest created-post-response
   (testing "post created"
