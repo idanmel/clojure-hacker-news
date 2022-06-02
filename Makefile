@@ -1,5 +1,5 @@
 docker-clean:
-	docker-compose up -d
+	docker-compose down -v
 
 tests-run: docker-clean
 	docker-compose up -d
